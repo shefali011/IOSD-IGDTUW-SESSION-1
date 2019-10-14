@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int t,i,j;
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n;
+		
+		int a[n];
+		int ans=0;
+		for(i=0;i<n;i++)
+			cin>>a[i];
+			
+		if(n==1)
+		{
+			cout<<"1\n";
+			continue;
+		}
+		
+		int lsum[n],rsum[n];
+		for(i=0;i<n;i++)
+		{
+			lsum[i]=0;
+			rsum[i]=0;
+			for(j=0;j<i;j++)
+			{
+				lsum[i]=lsum[i]+a[j];
+			}
+			for(j=i+1;j<n;j++)
+			{
+				rsum[i]=rsum[i]+a[j];
+			}
+			if(lsum[i]==rsum[i])
+			{
+				ans=i;
+				break;
+			}
+		}
+		if(ans==0)
+			cout<<"-1\n";
+		else
+			cout<<ans+1<<"\n";
+	}
+	return 0;
+}
